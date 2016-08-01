@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в личный кабинет</title>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation.css" %}">
+    <style type="text/css">
+{#        .form-signin {#}
+{#            max-width: 550px;#}
+{#            padding: 19px 29px 29px;#}
+{#            margin: 0 auto 20px;#}
+{#            background-color: #fff5a0;#}
+{#            border: 3px solid #e5e5e5;#}
+{#            -webkit-border-radius: 5px;#}
+{#            -moz-border-radius: 5px;#}
+{#            border-radius: 5px;#}
+{#            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);#}
+{#            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);#}
+{#            box-shadow: 0 1px 2px rgba(0, 0, 0, .05);#}
+{#        }#}
+{##}
+{#        .form-signin .form-signin-heading,#}
+{#        .form-signin .checkbox {#}
+{#            margin-bottom: 10px;#}
+{#        }#}
+{##}
+{#        .form-signin input[type="text"],#}
+{#        .form-signin input[type="password"] {#}
+{#            font-size: 16px;#}
+{#            height: auto;#}
+{#            margin-bottom: 15px;#}
+{#            padding: 7px 9px;#}
+{#        }#}
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <section class="top-bar-section">
+        <ul class="right">
+            {% if username %}
+                <li><a href="/logout/">Выйти ({{ last_name }} {{ first_name }})</a></li>
+            {% else %}
+                <li><a href="/register/">Регистрация</a></li>
+            {% endif %}
+        </ul>
+    </section>
+</div>
+<div class="row">
+{% if not username %}
+
+    <h1>
+            <center><a title="Вход в личный кабинет">Вход в личный кабинет</a></center>
+        </h1>
+        <br/><br/>
+    <div class="large-offset-3 large-6 columns">
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <label for="username"><b>Имя пользователя</b></label>
+            <input type="text" name="username" id="username" placeholder="Введите логин">
+            <label for="password"><b>Пароль</b></label>
+            <input type="password" name="password" id="password" placeholder="Введите пароль">
+            {% if login_error %}
+                <center><label class="error">{{ login_error }}</label></center>
+            {% endif %}
+        <br/>
+            <center><input class="button" type="submit" value="Войти"></center> </form>
+    {% else %}
+            <center><h2>Вы уже вошли как <a href="/lk/">{{ username }}</a></h2></center>
+
+       </div>
+{% endif %}
+    </div>
+</body>
+</html>
