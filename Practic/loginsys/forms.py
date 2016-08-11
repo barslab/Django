@@ -23,7 +23,7 @@ class MyRegistrationForm(UserCreationForm):
     group_number = forms.CharField(required=True)
     # birtday = forms.DateField(required = False)
     class Meta:
-        model = UserProfile
+        model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'group_number')
 
     def save(self, commit=True):
