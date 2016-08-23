@@ -56,6 +56,7 @@ def register(request):
 
 
 def lk(request):
+    
     username = auth.get_user(request).username
     return render_to_response('lk.html', { 'username': username })
 
