@@ -1,0 +1,14 @@
+{% extends 'main.html'%}
+{% block lk %}
+    {% if username %}
+<div class="row">
+<form action="/setting/" method="post">
+            {% csrf_token %}
+    {{ form_lk }}
+        <center><input type="submit" class="button" value="Готово"></center>
+    </form>
+</div>
+    {% else %}
+    <h1><center>Вы еще не вошли</center></h1>
+    {% endif %}
+{% endblock %}

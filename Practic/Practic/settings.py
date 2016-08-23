@@ -125,4 +125,4 @@ STATIC_ROOT = '/static/'
 STATICFILES_DIRS = [
     ('static', 'C:/Users/Sodium/PycharmProjects/NewProject/static'),
 ]
-AUTH_PROFILE_MODULE = 'loginsys.UserProfile'
+AUTH_PROFILE_MODULE = 'loginsys.Skills'

@@ -8,6 +8,12 @@
 </head>
 <body>
 <div class="top-bar"><section class="top-bar-section">
+     <ul class="left">
+            {% if username %}
+                <li><a href="/lk/">Личный кабинет</a></li>
+                <li><a href="/setting/">Настройки аккаунта</a></li>
+            {% endif %}
+     </ul>
     <ul class="right">
         {% if username %}
             <li><a href="/logout/">Выйти ({{ username }})</a> </li>

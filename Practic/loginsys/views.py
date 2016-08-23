@@ -1,12 +1,18 @@
+from profile import Profile
+
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, render_to_response
+from django.template import RequestContext
 from django.template.context_processors import csrf
-from loginsys.forms import MyRegistrationForm
+from loginsys.forms import MyRegistrationForm, LkForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.core.context_processors import csrf
+from loginsys.models import Skills
+
+
 def login(request):
     args={}
     args.update(csrf(request))
@@ -25,6 +31,9 @@ def login(request):
         # args['first_name'] = auth.get_user(request).first_name
         # args['last_name'] = auth.get_user(request).last_name
         return render_to_response('login.html', args)
+
+
+
 def logout(request):
     auth.logout(request)
     return redirect("/login/")
@@ -44,6 +53,21 @@ def register(request):
     print(args)
     return render(request, 'register.html', args)
 
+
+
 def lk(request):
     username = auth.get_user(request).username
     return render_to_response('lk.html', { 'username': username })
+
+
+
+def setting(request):
+    args = {}
+    args.update(csrf(request))
+    if request.POST:
+        form_lk = LkForm(request.POST)
+        if form_lk.is_valid():
+            form_lk.save()
+    args['username'] = auth.get_user(request).username
+    args['form_lk'] = LkForm(request.POST)
+    return render(request, 'setting.html', args)
