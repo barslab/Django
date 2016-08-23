@@ -1,0 +1,32 @@
+*.class
+*.zip
+*.git
+*.idea
+*.git
+*.iml
+*.exe
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#Ignore Packages#
+
+.out/
+.data/
+.classes/
+.generated-sources/
+.generated-test-sources/
+.maven-archiver/
+.maven-status/
+.surefire
+.surefire-reports/
+.test-classes/
+.idea/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
